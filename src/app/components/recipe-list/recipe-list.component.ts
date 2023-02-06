@@ -19,7 +19,7 @@ recipes: Recipe[] = [
 
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
       
   }
 
