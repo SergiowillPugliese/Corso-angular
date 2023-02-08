@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Output } from "@angular/core";
 
 @Component({
     selector: 'app-header',
@@ -11,8 +11,8 @@ import { Component } from "@angular/core";
 
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Recipes</a></li>
-                        <li><a href="#">Shopping List</a></li>
+                        <li><a href="#" (click)="onSelect('recipe')">Recipes</a></li>
+                        <li><a href="#" (click)="onSelect('shopping-list')">Shopping List</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li class="dropdown">
@@ -29,5 +29,9 @@ import { Component } from "@angular/core";
     `
 })
 export class HeaderComponent {
-
+    @Output() featurSelected = new EventEmitter<string>();
+    
+    onSelect(feature: string){
+        this.featurSelected.emit(feature)
+    }
 }
