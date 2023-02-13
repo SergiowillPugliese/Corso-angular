@@ -6,7 +6,7 @@ import { Ingredient } from '../../shared/ingredient.mode';
 })
 export class ShoppingListService {
   
-  ingredientAdded = new EventEmitter<Ingredient>()
+  ingredientAdded = new EventEmitter<Ingredient[]>()
 
   private ingredients: Ingredient[] = [
     new Ingredient('pasta', 1),
@@ -14,11 +14,22 @@ export class ShoppingListService {
     new Ingredient('olio', 3)
   ];
 
-  getIngredients() {
-    return this.ingredients.slice();
-  }
-
   constructor() { }
 
+  getIngredients() {
+    return this.ingredients.slice();
+  };
+
+  addIngredient(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+    //slice per creare un nuovo array copia
+    this.ingredientAdded.emit(this.ingredients.slice());
+  };
+
+  addIngredients(ingredients: Ingredient[]) {
+    /* ingredients.map((ingredient) => this.addIngredient(ingredient)) */
+    this.ingredients.push(...ingredients);
+    this.ingredientAdded.emit(this.ingredients.slice())
+  }
 
 }

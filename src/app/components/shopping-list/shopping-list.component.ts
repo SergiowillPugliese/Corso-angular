@@ -5,11 +5,10 @@ import { ShoppingListService } from 'src/app/components/shopping-list/shopping-l
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css'],
-  providers: [ShoppingListService]
+  styleUrls: ['./shopping-list.component.css']
 })
 export class ShoppingListComponent implements OnInit {
-  addIngredients!: Ingredient;
+
   ingredients!: Ingredient[];
 
   constructor(private shoppingListService: ShoppingListService) {}
@@ -18,8 +17,8 @@ export class ShoppingListComponent implements OnInit {
       this.ingredients = this.shoppingListService.getIngredients();
       this.shoppingListService.ingredientAdded
       .subscribe(
-        (ingredient: Ingredient)=> {
-          this.ingredients.push(ingredient)
+        (ingredient: Ingredient[])=> {
+          this.ingredients = ingredient;
         }
       )
   }
