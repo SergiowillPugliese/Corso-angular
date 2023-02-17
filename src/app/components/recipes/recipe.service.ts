@@ -9,16 +9,16 @@ import { Recipe } from './recipe-list/recipe.model';
 })
 export class RecipeService {
 
-  recipeSelected = new Subject<Recipe>();
+  recipeAdded = new Subject<any>()
 
   private recipes: Recipe[] = [
     new Recipe(
       'Zuppa disagio',
-      'Sapore di inadeguatezza e imbarazzo',
+      'Per quelli che davvero sanno! "Università della vita!"',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwdnmHWH5UaAfu-7TJJr0A_3WIP3tykBJkgw&usqp=CAU',
       [
         new Ingredient('Freddure', 12),
-        new Ingredient('Non cielo dicono', 10)
+        new Ingredient('Comblotti', 10)
       ]
     ),
     new Recipe(
@@ -26,15 +26,18 @@ export class RecipeService {
       'Da gustare odiando se stessi e gli altri',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwdnmHWH5UaAfu-7TJJr0A_3WIP3tykBJkgw&usqp=CAU',
       [
-        new Ingredient('Derisione', 15)
+        new Ingredient('Derisione', 15),
+        new Ingredient('Tuo padre era un maiale! (Piton docet)', 20)
       ]
     ),
     new Recipe(
-      'Zuppa di lacrime (20 Marzo)',
-      'Sa di amarezza',
+      'Zuppa di lacrime',
+      'Al gusto di fallimento e sconfitta',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwdnmHWH5UaAfu-7TJJr0A_3WIP3tykBJkgw&usqp=CAU',
       [
-        new Ingredient('Pezzi di cuore spezzati', 9)
+        new Ingredient('Pezzi di cuore spezzati', 9),
+        new Ingredient('Disprezzo per se stessi', 15),
+
       ]
     )
   ];

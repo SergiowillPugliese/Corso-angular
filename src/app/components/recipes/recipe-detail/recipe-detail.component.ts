@@ -26,10 +26,12 @@ export class RecipeDetailComponent implements OnInit {
       )
   }
 
+  //aggiunge gli igredienti della ricetta alla shopping list 
   onAddIngredientsToSL() {
     this.recipeService.addIngredientsTSL(this.recipe.ingredients);
   }
 
+  //in relazione alla rout esistente, naviga alla path /edit
   onEditMode() {
     this.router.navigate(['edit'], {relativeTo: this.route})
   }
