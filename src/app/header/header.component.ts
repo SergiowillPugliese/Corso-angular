@@ -3,7 +3,12 @@ import {StorageService} from "../shared/storage.service";
 
 @Component({
     selector: 'app-header',
-    templateUrl: './header.component.html'
+    templateUrl: './header.component.html',
+    styles: [`
+        a {
+          cursor: pointer;
+        }
+    `]
 })
 export class HeaderComponent {
 
@@ -12,4 +17,8 @@ export class HeaderComponent {
   onSaveData() {
     this.httpRequest.storeRecipes();
   };
+
+  onFetchData() {
+    this.httpRequest.fetchRecipe().subscribe();
+  }
 }

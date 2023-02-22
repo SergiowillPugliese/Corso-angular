@@ -14,7 +14,7 @@ export class RecipeService {
   //recipeAdded = new Subject<any>()
 
   private recipes: Recipe[] = [
-    new Recipe(
+   /* new Recipe(
       'Zuppa disagio',
       'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwdnmHWH5UaAfu-7TJJr0A_3WIP3tykBJkgw&usqp=CAU',
       'Per quelli che davvero sanno! "Università della vita!"',
@@ -41,10 +41,15 @@ export class RecipeService {
         new Ingredient('Disprezzo per se stessi', 15),
 
       ]
-    )
+    )*/
   ];
 
   constructor(private shoppingListService: ShoppingListService) { }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
+  }
 
   getRecipes() {
     return this.recipes.slice();
