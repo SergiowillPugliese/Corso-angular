@@ -18,11 +18,6 @@ export class ShoppingListService {
 
   constructor() { }
 
-  setIngredients(ingredients: Ingredient[]) {
-    return (this.ingredients = ingredients).slice();
-
-  }
-
   getIngredients() {
     return this.ingredients.slice();
   };
