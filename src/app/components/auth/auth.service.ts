@@ -54,6 +54,7 @@ export class AuthService {
   }
 
   //carmelino ciccino
+  //Giacomino Obs
   login(email: string, password: string) {
     return this.http.post<AuthResponseData>(
       this.LOGIN_URL + this.API_KEY,
