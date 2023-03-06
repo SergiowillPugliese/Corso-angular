@@ -1,9 +1,9 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {RecipeService} from "../components/recipes/recipe.service";
 import {Recipe} from "../components/recipes/recipe-list/recipe.model";
-import {ShoppingListService} from "../components/shopping-list/shopping-list.service";
 import {map, tap} from "rxjs";
+import {AuthService} from "../components/auth/auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class StorageService {
   constructor(
     private httpRequest: HttpClient,
     private recipeService: RecipeService,
-    private shoppingListService: ShoppingListService
+    private authService: AuthService
   ) {
   }
 
@@ -30,15 +30,21 @@ export class StorageService {
   }
 
   fetchRecipe() {
-    return this.httpRequest.get<Recipe[]>('https://ng-recipe-book-458ba-default-rtdb.europe-west1.firebasedatabase.app/recipes.json')
-      .pipe(map(recipe => {
-          return recipe.map(recipe => {
-            return {...recipe, ingredients: recipe.ingredients ? recipe.ingredients : []};
-          })
-        }),
-        tap(recipes => {
-          this.recipeService.setRecipes(recipes);
-        })
-      )
+    return this.httpRequest.get<Recipe[]>(
+      'https://ng-recipe-book-458ba-default-rtdb.europe-west1.firebasedatabase.app/recipes.json'
+    ).pipe(
+      map(recipe => {
+        return recipe.map(recipe => {
+          return {
+            ...recipe,
+            ingredients: recipe.ingredients ? recipe.ingredients : []
+          };
+        });
+      }),
+      tap(recipes => {
+        this.recipeService.setRecipes(recipes)
+      })
+    );
   }
+
 }
