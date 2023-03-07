@@ -12,6 +12,7 @@ export class AppComponent implements OnInit{
   constructor(private authService: AuthService) {
   }
 
+  //in culo a 'mammt
   ngOnInit() {
     this.authService.autoLogin();
   }
